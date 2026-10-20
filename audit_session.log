@@ -1,0 +1,152 @@
+﻿
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020153150
+Nombre de usuario: COMPUTADORMANU\PC
+Usuario RunAs: COMPUTADORMANU\PC
+Nombre de la configuración: 
+Máquina: COMPUTADORMANU (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\PC\AppData\Local\Programs\Microsoft VS Code\2242ebbb54\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Id. de proceso: 23936
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es audit_session.log
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker build --build-arg STUDENT_ID="847073" -t eco-air-backend:1.0.0 .
+ key: failed to calculate checksum of ref rf3xtrlkhatgwwe9uhhgft
+beo::pky3cu3q02owfxw7wkg24xzfx: "/src": not found
+
+View build details: docker-desktop://dashboard/build/desktop-lin
+ux/desktop-linux/3v6i38jtlfxxpgi32yg2pfm6u
+]633;D;1]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Set-Content -Path pom.xml -Value @"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns=`"http://maven.apache.org/POM/4.0.0`" xmlns:xsi=`"http://www.w3.org/2001/XMLSchema-instance`"
+    xsi:schemaLocation=`"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd`">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.5</version>
+    </parent>
+    <groupId>com.ecoair</groupId>
+    <artifactId>eco-air-backend</artifactId>
+    <version>1.0.0</version>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+"@
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>New-Item -Path "src\main\java\com\ecoair" -ItemType Directory -Force
+
+
+    Directorio: C:\Users\PC\Downloads\universidad\eco-air-backe
+    nd\src\main\java\com
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----      20/10/2026  3:36 p. m.                ecoair
+
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Set-Content -Path "src\main\java\com\ecoair\EcoAirApplication.java" -Value @"
+package com.ecoair;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EcoAirApplication {
+    public static void main(String[] args) {
+        System.out.println(`"Started EcoAirApplication`");
+        SpringApplication.run(EcoAirApplication.class, args);
+    }
+}
+"@
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker build --build-arg STUDENT_ID="847073" -t eco-air-backend:1.0.0 .
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker history --human --format "table {{.Size}}`t{{.CreatedBy}}" eco-air-backend:1.0.0
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker run -d --name eco_air_active -p 8080:8080 eco-air-backend:1.0.0
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker top eco_air_active -o pid,user,comm
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker exec eco_air_active touch /etc/crontab_fake
+touch: cannot touch '/etc/crontab_fake': Permission denied
+]633;D;1]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker exec eco_air_active which mvn
+
+]633;D;1]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker exec eco_air_active find / -name "*.java" 2> $null
+docker : find: /root: Permission denied
+En línea: 1 Carácter: 1
++ docker exec eco_air_active find / -name "*.java" 2> $null
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (find: /root: Permission denied:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+find: /proc/tty/driver: Permission denied
+
+]633;D;1]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker run -d --name eco_air_crash -m 48m eco-air-backend:1.0.0
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Start-Sleep -Seconds 10
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker inspect eco_air_crash --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Start-Transcript
+La transcripción ha comenzado. El archivo de salida es C:\Users\PC\OneDrive\Documents\PowerShell_transcript.COMPUTADORMANU.4AWZwb8M.20261020155022.txt
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Stop-Transcript
+La transcripción se ha detenido. El archivo de salida es C:\Users\PC\OneDrive\Documents\PowerShell_transcript.COMPUTADORMANU.4AWZwb8M.20261020155022.txt
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Start-Transcript -Path audit_session.log -Append
+La transcripción ha comenzado. El archivo de salida es audit_session.log
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+]633;D]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker rm -f eco_air_crash
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker run -d --name eco_air_crash_2 -m 16m eco-air-backend:1.0.0
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>Start-Sleep -Seconds 10
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker inspect eco_air_crash_2 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+]633;D]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker inspect --format='{{.Id}}' eco-air-backend:1.0.0
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
+PS>docker exec eco_air_active sh -c "env | grep OPERATOR_ID"
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cUsers\x5cPC\x5cDownloads\x5cuniversidad\x5ceco-air-backendPS C:\Users\PC\Downloads\universidad\eco-air-backend> ]633;B
